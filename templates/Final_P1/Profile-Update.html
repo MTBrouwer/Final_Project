@@ -1,0 +1,12 @@
+{% extends 'Final_P1/UserProfile.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+     <h1>Product Form</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <a href="{% url 'view_profile' %}" class="btn btn-info"><i class="fas fa-arrow-left"></i> Go Back</a>
+        <button type="reset" class="btn btn-warning"><i class="fas fa-redo-alt"></i> Reset</button>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+    </form>
+{% endblock %}
