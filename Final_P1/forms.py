@@ -1,7 +1,5 @@
 from django import forms
-from .models import Player
-from .models import PlayerInterest
-from .models import PlayerFavoriteCharacter
+from .models import Player,PlayerInterest,PlayerFavoriteCharacter
 
 class PlayerForm(forms.ModelForm):
     class Meta:

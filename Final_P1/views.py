@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import PlayerForm, InterestForm, FavoriteCharacterForm
 from .models import Player, PlayerInterest, PlayerFavoriteCharacter
 
-
 @login_required(login_url='login')
 
 
@@ -58,44 +57,55 @@ def logout_view(request):
 ########################
 # CRUD COMMANDS
 def view_profile(request):
-	# Retrieve all the products and render products.html with the data
-	products = Player.objects.all()
-	context = {'playerbase' : products}
-	return render(request, 'Final_P1/UserProfile.html', context)
+    tasks = Player.objects.all()
+    context = {'tasks': tasks}
+    return render(request, 'Final_P1/Home.html', context)
 
 def create_profile(request):
-	# Create a form instance and populate it with data from the request
-	form = PlayerForm(request.POST or None)
-	# check whether it's valid:
-	if form.is_valid():
-		# save the record into the db
-		form.save()
-		# after saving redirect to view_product page
-		return redirect('view_player')
-	# if the request does not have post data, a blank form will be rendered
-	return render(request, 'Final_P1/Profile-Form.html', {'form': form})
+    if request.method == 'POST':
+        form = PlayerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('view_profile')
+    else:
+        form = PlayerForm()
+        context = {'form': form}
+        return render(request, 'Final_P1/Profile-Form.html', context)
 
-def update_profile(request, id):
-    # Get the product based on its id
-    product = Player.objects.get(id=id)
-    # populate a form instance with data from the data on the database
-    # instance=product allows to update the record rather than creating a new record when save method is called
-    form = PlayerForm(request.POST or None, instance=product)
 
-    # check whether it's valid:
+def update(request, id):
+    tasks = Player.objects.get(id=id)
+    # Place created at variable here
+    form = PlayerForm(request.POST or None, instance=tasks)
     if form.is_valid():
-        # update the record in the db
         form.save()
-        # after updating redirect to view_product page
-        return redirect('view_profile')
+        return redirect('index')
 
-    # if the request does not have post data, render the page with the form containing the product's info
-    return render(request, 'Final_P1/Profile-Form.html', {'playerbase': form, 'product': product})
+    context = {'form': form}
+    return render(request, 'add.html', context)
+
+
+def delete(request, id):
+    task = Player.objects.get(id=id)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('index')
+    context = {'task': task}
+    return render(request, 'delete.html', context)
+
 ########################
+def AddPlayerForm(request):
+    form = PlayerForm()
+    context = {'form': form}
+    return render(request,'Final_P1/Profile-Form.html',context)
+
+def AddInterestForm(request):
+    form = InterestForm()
+    context = {'form': form}
+    return render(request, 'Final_P1/Profile-Form.html', context)
 
 
-
-
+#FavoriteCharacterForm
 ########################
 def index(request):
     return render(request, 'Final_P1/Home.html')
@@ -105,16 +115,8 @@ def index3(request):
     return render(request, 'Final_P1/Community.html')
 def index4(request):
     return render(request, 'Final_P1/About.html')
-def index5(request):
-    return render(request, 'Final_P1/Roster.html')
-def indexO(request):
-    return render(request, 'Final_P1/Roster.html')
-def indexF(request):
-    return render(request, 'Final_P1/Roster.html')
-def indexS(request):
-    return render(request, 'Final_P1/Roster.html')
-def indexH(request):
-    return render(request, 'Final_P1/Roster.html')
+def ProfileForm(request):
+    return render(request, 'Final_P1/Profile-Form.html')
 def indexR(request):
     return render(request, 'Final_P1/register.html')
 def indexProfile(request):
