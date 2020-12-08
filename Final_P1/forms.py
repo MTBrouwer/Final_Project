@@ -9,10 +9,10 @@ class PlayerForm(forms.ModelForm):
 class InterestForm(forms.ModelForm):
     class Meta:
         model = PlayerInterest
-        fields = '__all__'
+        fields = ['interests']
 
 class FavoriteCharacterForm(forms.ModelForm):
     class Meta:
         model = PlayerFavoriteCharacter
-        fields = '__all__'
+        fields = ['favorite_char']
 
