@@ -1,4 +1,5 @@
 {% extends 'Final_P1/base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}
     <title> Add Task </title>
 {% endblock %}
@@ -7,7 +8,9 @@
     <h1> Add Product</h1>
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {{ form|crispy }}
+                {{ form2|crispy  }}
+                {{ form3|crispy  }}
                 <input type="submit">
             </form>
 

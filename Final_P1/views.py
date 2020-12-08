@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import PlayerForm, InterestForm, FavoriteCharacterForm
 from .models import Player, PlayerInterest, PlayerFavoriteCharacter
 
-@login_required(login_url='login')
+
 
 
 ########################
@@ -56,6 +56,7 @@ def logout_view(request):
     return redirect('index')
 ########################
 # CRUD COMMANDS
+@login_required(login_url='login')
 def view_profile(request):
     tasks = Player.objects.all()
     context = {'tasks': tasks}
@@ -96,7 +97,9 @@ def delete(request, id):
 ########################
 def AddPlayerForm(request):
     form = PlayerForm()
-    context = {'form': form}
+    form2 = InterestForm()
+    form3 = FavoriteCharacterForm()
+    context = {'form': form,'form2': form2,'form3': form3}
     return render(request,'Final_P1/Profile-Form.html',context)
 
 def AddInterestForm(request):

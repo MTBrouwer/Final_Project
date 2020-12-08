@@ -7,7 +7,7 @@ class Player(models.Model):
     Major = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.UserName, self.Grade, self.Major
+        return self.UserName
 
 class PlayerInterest(models.Model):
     player = models.ForeignKey(Player,on_delete=models.CASCADE)
