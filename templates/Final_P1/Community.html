@@ -1,11 +1,15 @@
 {% extends 'Final_P1/base.html' %}
 {% load static %}
 {% block body %}
-
+<div class = "container">
+    <h1>Here are some of our members!</h1>
+<p> If you want to join this list of members create an account!</p>
 <form method="post">
 
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit">
+
     </form>
+    </div>
+
 {% endblock %}%}

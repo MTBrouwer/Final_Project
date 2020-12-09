@@ -68,10 +68,10 @@ def create_profile(request):
         if form.is_valid():
             form.save()
             return redirect('view_profile')
-    else:
-        form = PlayerForm()
-        context = {'form': form}
-        return render(request, 'Final_P1/Profile-Form.html', context)
+        else:
+            form = PlayerForm()
+            context = {'form': form}
+            return render(request, 'Final_P1/Profile-Form.html', context)
 
 
 def update(request, id):
