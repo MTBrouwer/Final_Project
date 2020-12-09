@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from updater import views
+from Final_P1 import views
 
 urlpatterns = [
     path("update_server/", views.update, name="update"),
