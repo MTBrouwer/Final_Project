@@ -1,26 +1,33 @@
 from django.db import models
 
-class Player(models.Model):
-    Name = models.CharField(max_length=100)
-    UserName= models.CharField(max_length=100)
-    Grade= models.CharField(max_length=100)
-    Major = models.CharField(max_length=100)
+
+class studentInfo(models.Model):
+    userName = models.CharField(max_length=100)
+    lookingforComp = models.BooleanField(default=False)
+    lookingforCasual = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.UserName
-
-class PlayerInterest(models.Model):
-    player = models.ForeignKey(Player,on_delete=models.CASCADE)
-    interests = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.interests
+        return self.userName
 
 
-class PlayerFavoriteCharacter(models.Model):
-    player = models.ForeignKey(Player, on_delete=models.CASCADE)
-    favorite_char = models.CharField(max_length=100)
+#
+class favorite(models.Model):
+    favoriteGame = models.CharField(max_length=100)
+    favoriteCharacter = models.CharField(max_length=100)
+    favoriteGenre = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.favorite_char
+        return self.favoriteGame
 
+
+class clubs(models.Model):
+    clubsCurrentlyIn = models.CharField(max_length=100)
+    clubsKnowAbout = models.CharField(max_length=100)
+    esportsClub = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.clubsCurrentlyIn
+
+# 3 forms first one is  username, grade. and major,
+#  second is favorite character, favoirtge game, favorite genra
+# Looking for team. Looking for comp, looking for casual
