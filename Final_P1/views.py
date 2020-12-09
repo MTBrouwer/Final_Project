@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login , logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .forms import PlayerForm, InterestForm, FavoriteCharacterForm
 from .models import Player, PlayerInterest, PlayerFavoriteCharacter
+from django.shortcuts import render
+
 
 
 
@@ -131,24 +132,4 @@ def indexProfile(request):
 
 
 
-import git
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
-def update(request):
-    if request.method == "POST":
-        '''
-        pass the path of the diectory where your project will be 
-        stored on PythonAnywhere in the git.Repo() as parameter.
-        Here the name of my directory is "test.pythonanywhere.com"
-        '''
-        repo = git.Repo("test.pythonanywhere.com/")
-        origin = repo.remotes.origin
-
-        origin.pull()
-
-        return HttpResponse("Updated code on PythonAnywhere")
-    else:
-        return HttpResponse("Couldn't update the code on PythonAnywhere")

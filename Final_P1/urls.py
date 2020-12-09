@@ -1,9 +1,8 @@
 from django.urls import path
 from . import views
-from Final_P1 import views
+
 
 urlpatterns = [
-    path("update_server/", views.update, name="update"),
     path('', views.index, name='index'),
     path('Home', views.index),
     path('Game', views.index2),
