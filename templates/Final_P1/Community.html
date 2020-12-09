@@ -1,5 +1,11 @@
 {% extends 'Final_P1/base.html' %}
-
+{% load static %}
 {% block body %}
-{% endblock %}%}
 
+<form method="post">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+{% endblock %}%}

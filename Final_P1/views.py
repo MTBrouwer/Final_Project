@@ -115,7 +115,11 @@ def index(request):
 def index2(request):
     return render(request, 'Final_P1/Game.html')
 def index3(request):
-    return render(request, 'Final_P1/Community.html')
+
+
+    tasks = Player.objects.all()
+    context = {'tasks': tasks}
+    return render(request, 'Final_P1/Community.html',context)
 def index4(request):
     return render(request, 'Final_P1/About.html')
 def ProfileForm(request):
