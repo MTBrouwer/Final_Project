@@ -4,12 +4,13 @@
 <div class = "container">
     <h1>Here are some of our members!</h1>
 <p> If you want to join this list of members create an account!</p>
-<form method="post">
 
-        {% csrf_token %}
-        {{ form.as_p }}
+    {% for student in students %}
+         {{ student }}<br>
 
-    </form>
+    {% endfor %}
+
+    {% endblock %}%}
+
     </div>
 
-{% endblock %}%}
