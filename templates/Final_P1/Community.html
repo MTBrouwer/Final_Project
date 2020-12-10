@@ -12,7 +12,13 @@
 <form action="{% url 'Delete-StudentForm' student.id %}" method="post">
     {% csrf_token %}
     <p>Are you sure you want to delete {{  student }}</p>
-    <button type="submit" value="Delete" /></button>
+    <button type="submit" value="Delete"></button>
+</form>
+
+        <form action="{% url 'Update-StudentForm' student.id %}" method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{  student }}</p>
+    <button type="submit" value="Update">Update</button>
 </form>
     {% endfor %}
 
@@ -20,4 +26,3 @@
 </ul>
     </div>
 
- delete

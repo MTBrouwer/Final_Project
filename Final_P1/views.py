@@ -82,10 +82,9 @@ def update(request, id):
     form = studentInfoForm(request.POST or None, instance=student)
     if form.is_valid():
         form.save()
-        return redirect('index')
-
-    context = {'form': form}
-    return render(request, 'add.html', context)
+        return redirect('community')
+    context = {'students': student}
+    return render(request, 'Final_P1/Profile-Update.html', context)
 
 
 def delete(request, id):
@@ -94,7 +93,7 @@ def delete(request, id):
         student.delete()
         return redirect('index')
     context = {'students': student}
-    return render(request, 'Delete.html', context)
+    return render(request, 'Final_P1/Delete.html', context)
 
 ########################
 def AddPlayerForm(request):
