@@ -1,12 +1,10 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login , logout
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .forms import PlayerForm, InterestForm, FavoriteCharacterForm
-from .models import Player, PlayerInterest, PlayerFavoriteCharacter
-
-
+from .forms import studentInfoForm, studentInterestForm, clubForm
+from .models import studentInfo, favorite, clubs
+from django.shortcuts import render
 
 
 ########################
@@ -58,26 +56,26 @@ def logout_view(request):
 # CRUD COMMANDS
 @login_required(login_url='login')
 def view_profile(request):
-    tasks = Player.objects.all()
-    context = {'tasks': tasks}
+    student = studentInfo.objects.all()
+    context = {'students': student}
     return render(request, 'Final_P1/Home.html', context)
 
 def create_profile(request):
     if request.method == 'POST':
-        form = PlayerForm(request.POST)
+        form = studentInfoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('view_profile')
         else:
-            form = PlayerForm()
+            form = studentInfoForm()
             context = {'form': form}
             return render(request, 'Final_P1/Profile-Form.html', context)
 
 
 def update(request, id):
-    tasks = Player.objects.get(id=id)
+    student = studentInfo.objects.get(id=id)
     # Place created at variable here
-    form = PlayerForm(request.POST or None, instance=tasks)
+    form = studentInfoForm(request.POST or None, instance=student)
     if form.is_valid():
         form.save()
         return redirect('index')
@@ -87,23 +85,32 @@ def update(request, id):
 
 
 def delete(request, id):
-    task = Player.objects.get(id=id)
+    student = studentInfoForm.objects.get(id=id)
     if request.method == 'POST':
-        task.delete()
+        student.delete()
         return redirect('index')
-    context = {'task': task}
+    context = {'students': student}
     return render(request, 'delete.html', context)
 
 ########################
 def AddPlayerForm(request):
-    form = PlayerForm()
-    form2 = InterestForm()
-    form3 = FavoriteCharacterForm()
-    context = {'form': form,'form2': form2,'form3': form3}
-    return render(request,'Final_P1/Profile-Form.html',context)
+    if request.method == 'POST':
+        form = studentInfoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = studentInfoForm()
+        context = {'form': form}
+        return render(request, 'Final_P1/Profile-Form.html', context)
+    #form = studentInfoForm()
+   # form2 = studentInterestForm()
+    #form3 = clubForm()
+   # context = {'form': form,}#'#form2': form2,'form3': form3}
+    #return render(request,'Final_P1/Profile-Form.html',context)
 
 def AddInterestForm(request):
-    form = InterestForm()
+    form = studentInterestForm()
     context = {'form': form}
     return render(request, 'Final_P1/Profile-Form.html', context)
 
@@ -112,15 +119,15 @@ def AddInterestForm(request):
 ########################
 def index(request):
     return render(request, 'Final_P1/Home.html')
-def index2(request):
+def game(request):
     return render(request, 'Final_P1/Game.html')
-def index3(request):
+def community(request):
 
 
-    tasks = Player.objects.all()
-    context = {'tasks': tasks}
+    student = studentInfo.objects.all()
+    context = {'tasks': student}
     return render(request, 'Final_P1/Community.html',context)
-def index4(request):
+def about(request):
     return render(request, 'Final_P1/About.html')
 def ProfileForm(request):
     return render(request, 'Final_P1/Profile-Form.html')

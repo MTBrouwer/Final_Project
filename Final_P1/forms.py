@@ -1,18 +1,24 @@
 from django import forms
-from .models import Player,PlayerInterest,PlayerFavoriteCharacter
+from .models import studentInfo, favorite, clubs
 
-class PlayerForm(forms.ModelForm):
+
+class studentInfoForm(forms.ModelForm):
     class Meta:
-        model = Player
+        model = studentInfo
         fields = '__all__'
 
-class InterestForm(forms.ModelForm):
-    class Meta:
-        model = PlayerInterest
-        fields = ['interests']
 
-class FavoriteCharacterForm(forms.ModelForm):
+class studentInterestForm(forms.ModelForm):
     class Meta:
-        model = PlayerFavoriteCharacter
-        fields = ['favorite_char']
+        model = favorite
+        fields = '__all__'
 
+
+class clubForm(forms.ModelForm):
+    class Meta:
+        model = clubs
+        fields = '__all__'
+
+# 3 forms first one is  username, grade. and major,
+#  second is favorite character, favoirtge game, favorite genra
+# Looking for team. Looking for comp, looking for casual
