@@ -4,15 +4,13 @@
 <div class = "container">
     <h1>Here are some of our members!</h1>
 <p> If you want to join this list of members create an account!</p>
-<ul>
+
     {% for student in students %}
-        <li> {{ student }}</li>
+         {{ student }}<br>
 
     {% endfor %}
 
-        <li> {{ userName }}</li>
-
     {% endblock %}%}
-</ul>
+
     </div>
 
