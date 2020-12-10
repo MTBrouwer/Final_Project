@@ -89,7 +89,7 @@ def update(request, id):
 
 
 def delete(request, id):
-    student = studentInfoForm.objects.get(id=id)
+    student = studentInfo.objects.get(id=id)
     if request.method == 'POST':
         student.delete()
         return redirect('index')
