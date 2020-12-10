@@ -4,15 +4,18 @@
 <div class = "container">
     <h1>Here are some of our members!</h1>
 <p> If you want to join this list of members create an account!</p>
-
+<ul>
     {% for student in students %}
-        <br>USERNAME: {{ student }} <br> Looking for Competetive team:
-        {{ student.lookingforComp }}<br> Looking for Casual: {{ student.lookingforCasual }}
+        <br><li>USERNAME: {{ student }} <br> Looking for Competetive team:
+        {{ student.lookingforComp }}<br> Looking for Casual: {{ student.lookingforCasual }} </li>
 
-
+<form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete {{  student }}</p>
+    <input type="submit" value="Delete" />
+</form>
     {% endfor %}
 
     {% endblock %}%}
-
+</ul>
     </div>
 
