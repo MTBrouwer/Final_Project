@@ -55,10 +55,16 @@ def logout_view(request):
 ########################
 # CRUD COMMANDS
 @login_required(login_url='login')
+
 def view_profile(request):
     student = studentInfo.objects.all()
     context = {'students': student}
     return render(request, 'Final_P1/Home.html', context)
+
+def view_students(request):
+    students=studentInfo.objects.all()
+    context = {'students': students}
+    return render (request, 'Final_P1/Community.html', context)
 
 def create_profile(request):
     if request.method == 'POST':
@@ -148,10 +154,9 @@ def index(request):
 def game(request):
     return render(request, 'Final_P1/Game.html')
 def community(request):
-
-
     student = studentInfo.objects.all()
-    context = {'tasks': student}
+    context = {'students': student}
+    return render(request, 'Final_P1/Community.html', context)
     return render(request, 'Final_P1/Community.html',context)
 def about(request):
     return render(request, 'Final_P1/About.html')
