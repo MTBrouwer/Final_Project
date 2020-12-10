@@ -20,6 +20,6 @@ urlpatterns = [
     path('Profile/', views.indexProfile, name='index_profile'),
     path('Profile/Form', views.ProfileForm, name='Profile-Form'),
     path('Profile/studentInfoForm', views.AddPlayerForm, name='studentInfoForm'),
-    path('Profile/studentInterestForm', views.AddInterestForm, name='clubForm'),
-    path('Profile/sfavorite', views.favorite, name='studentInterestForm'),
+    path('Profile/studentInterestForm', views.InterestForm, name='clubForm'),
+    path('Profile/sfavorite', views.favorite, name='favorite'),
 ]

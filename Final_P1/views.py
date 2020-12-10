@@ -96,11 +96,26 @@ def delete(request, id):
 def AddPlayerForm(request):
     if request.method == 'POST':
         form = studentInfoForm(request.POST)
+
         if form.is_valid():
             form.save()
+
             return redirect('index')
     else:
         form = studentInfoForm()
+        context = {'form': form}
+        return render(request, 'Final_P1/Profile-Form.html', context)
+
+def InterestForm(request):
+    if request.method == 'POST':
+        form = studentInterestForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('index')
+    else:
+        form = studentInterestForm()
         context = {'form': form}
         return render(request, 'Final_P1/Profile-Form.html', context)
     #form = studentInfoForm()
@@ -109,10 +124,21 @@ def AddPlayerForm(request):
    # context = {'form': form,}#'#form2': form2,'form3': form3}
     #return render(request,'Final_P1/Profile-Form.html',context)
 
-def AddInterestForm(request):
-    form = studentInterestForm()
-    context = {'form': form}
-    return render(request, 'Final_P1/Profile-Form.html', context)
+def favorite(request):
+    if request.method == 'POST':
+        form = clubForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('index')
+    else:
+        form = clubForm()
+        context = {'form': form}
+        return render(request, 'Final_P1/Profile-Form.html', context)
+
+
+
 
 
 #FavoriteCharacterForm
