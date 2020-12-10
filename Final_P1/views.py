@@ -94,7 +94,7 @@ def delete(request, id):
         student.delete()
         return redirect('index')
     context = {'students': student}
-    return render(request, 'delete.html', context)
+    return render(request, 'Delete.html', context)
 
 ########################
 def AddPlayerForm(request):
@@ -155,7 +155,6 @@ def community(request):
     student = studentInfo.objects.all()
     context = {'students': student}
     return render(request, 'Final_P1/Community.html', context)
-    return render(request, 'Final_P1/Community.html',context)
 def about(request):
     return render(request, 'Final_P1/About.html')
 def ProfileForm(request):

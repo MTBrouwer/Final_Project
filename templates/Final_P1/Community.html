@@ -9,9 +9,10 @@
         <br><li>USERNAME: {{ student }} <br> Looking for Competetive team:
         {{ student.lookingforComp }}<br> Looking for Casual: {{ student.lookingforCasual }} </li>
 
-<form action="" method="post">{% csrf_token %}
+<form action="{% url 'Delete-StudentForm' student.id %}" method="post">
+    {% csrf_token %}
     <p>Are you sure you want to delete {{  student }}</p>
-    <input type="submit" value="Delete" />
+    <button type="submit" value="Delete" /></button>
 </form>
     {% endfor %}
 
@@ -19,3 +20,4 @@
 </ul>
     </div>
 
+ delete

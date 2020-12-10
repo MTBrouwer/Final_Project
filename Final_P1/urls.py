@@ -22,5 +22,6 @@ urlpatterns = [
     path('Profile/studentInfoForm', views.AddPlayerForm, name='studentInfoForm'),
     path('Profile/studentInterestForm', views.InterestForm, name='clubForm'),
     path('Profile/favorite', views.favorite, name='favorite'),
+    path('Profile/Delete<int:id>', views.delete, name='Delete-StudentForm'),
 
 ]
