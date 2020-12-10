@@ -11,7 +11,3 @@ $("#FavoriteForm" ).click(function() {
            disableFavoriteForm();
     });
 });
-
-$('#rbutton').on('click',function() {
-    $(this).prop("disabled",true);
-});
