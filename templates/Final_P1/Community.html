@@ -6,7 +6,9 @@
 <p> If you want to join this list of members create an account!</p>
 
     {% for student in students %}
-         {{ student }}<br>
+        <br>USERNAME: {{ student }} <br> Looking for Competetive team:
+        {{ student.lookingforComp }}<br> Looking for Casual: {{ student.lookingforCasual }}
+
 
     {% endfor %}
 
