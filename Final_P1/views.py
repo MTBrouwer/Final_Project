@@ -83,7 +83,7 @@ def update(request, id):
     if form.is_valid():
         form.save()
         return redirect('community')
-    context = {'students': student}
+    context = {'form':form,'students': student}
     return render(request, 'Final_P1/Profile-Update.html', context)
 
 
