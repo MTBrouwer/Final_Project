@@ -10,7 +10,7 @@ urlpatterns = [
     path('About', views.about),
     path('Profile/Home', views.index),
     path('Profile/Game', views.game),
-    path('Profile/Community', views.community),
+    path('Profile/Community', views.community, name="community"),
     path('Profile/About', views.about),
     path('register/', views.register_view, name='register'),
     path('Roster', views.register_view),
@@ -22,5 +22,7 @@ urlpatterns = [
     path('Profile/studentInfoForm', views.AddPlayerForm, name='studentInfoForm'),
     path('Profile/studentInterestForm', views.InterestForm, name='clubForm'),
     path('Profile/favorite', views.favorite, name='favorite'),
+    path('Profile/Delete<int:id>', views.delete, name='Delete-StudentForm'),
+    path('Profile/Update<int:id>', views.update, name='Update-StudentForm'),
 
 ]

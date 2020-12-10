@@ -1,5 +1,5 @@
 {% extends 'Final_P1/base.html' %}
-
+{% load static %}
 {% block body %}
         <div class="row">
   <div class="column">
@@ -11,9 +11,8 @@
   <div class="column">
     <a href="https://www.fifa.com/">
         <!--https://www.fifa.com/ -->
-             <img src="static/images/Fifa.png"  class="rounded mx-auto d-block" alt="..." height=100% width="150px" id="gameimg">
+                <img class="img-fluid" alt="book" src={% static 'images/Fifa.png' %} >
         </a>
-
   </div>
   <div class="column">
     <a href="Roster/Overwatch">

@@ -5,7 +5,7 @@
     <form method="post" action="">
         {% csrf_token %}
         {{ form|crispy }}
-        <a href="{% url 'view_profile' %}" class="btn btn-info"><i class="fas fa-arrow-left"></i> Go Back</a>
+        <a href="{% url 'Profile-Form' %}" class="btn btn-info"><i class="fas fa-arrow-left"></i> Go Back</a>
         <button type="reset" class="btn btn-warning"><i class="fas fa-redo-alt"></i> Reset</button>
         <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
     </form>
