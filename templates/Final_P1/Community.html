@@ -2,26 +2,43 @@
 {% load static %}
 {% block body %}
 <div class = "container">
-    <h1>Here are some of our members!</h1>
-<p> If you want to join this list of members create an account!</p>
+    <h1>Here are some of our members!
+    <p> If you want to join this list of members create an account!</p></h1>
+
 <ul>
-    {% for student in students %}
-        <br><li>USERNAME: {{ student }} <br> Looking for Competetive team:
-        {{ student.lookingforComp }}<br> Looking for Casual: {{ student.lookingforCasual }} </li>
+     <table class="table-light">
+        {% for student in students %}
 
-<form action="{% url 'Delete-StudentForm' student.id %}" method="post">
+  <thead>
+    <tr>
+        <th scope="col"></th>
+      <th scope="col">Username</th>
+      <th scope="col">Looking for Competetive team:</th>
+      <th scope="col">Looking for Casual: </th>
+      <th scope="col">Delete</th>
+        <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>{{ student }}</td>
+      <td>{{ student.lookingforComp }}</td>
+      <td>{{ student.lookingforCasual }}</td>
+         <td><form action="{% url 'Delete-StudentForm' student.id %}" method="post">
     {% csrf_token %}
-    <p>Are you sure you want to delete {{  student }}</p>
-    <button type="submit" value="Delete"></button>
-</form>
 
+    <button type="submit" value="Delete" class="btn btn-danger">Delete?</button>
+</form></td>
+         <td>
         <form action="{% url 'Update-StudentForm' student.id %}" method="post">
     {% csrf_token %}
-    <p>Are you sure you want to delete {{  student }}</p>
-    <button type="submit" value="Update">Update</button>
-</form>
+    <button type="submit" value="Update"  class="btn btn-secondary">Update?</button>
+</form></td>
+    </tr>
+  </tbody>
     {% endfor %}
-
+</table>
     {% endblock %}%}
 </ul>
     </div>

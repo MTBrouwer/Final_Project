@@ -91,7 +91,7 @@ def delete(request, id):
     student = studentInfo.objects.get(id=id)
     if request.method == 'POST':
         student.delete()
-        return redirect('index')
+        return redirect('community')
     context = {'students': student}
     return render(request, 'Final_P1/Delete.html', context)
 
